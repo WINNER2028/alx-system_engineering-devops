@@ -15,8 +15,8 @@
    No_11--binary_to_decimal: script that converts a number from base 2 to base 10
    No_12--combinations: script that prints all possible combinations of two letters, except oo
    No_13--print_float: script that prints a number with two decimal places
-   No_14--decimal_to_hexadecimal: script that converts a number from base 10 to base 16
-   No_100--rot13: script that encodes and decodes text using the rot13 encryption
-   No_101--odd: script that prints every other line from the input, starting with the first line
-   No_102--water_and_stir: script that adds the two numbers stored in the environment variables
+   No_100--decimal_to_hexadecimal: script that converts a number from base 10 to base 16
+   No_101--rot13: script that encodes and decodes text using the rot13 encryption
+   No_102--odd: script that prints every other line from the input, starting with the first line
+   No_103--water_and_stir: script that adds the two numbers stored in the environment variables
 
