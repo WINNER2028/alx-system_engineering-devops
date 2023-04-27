@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# This is a script to display "Best School" 10 times
+j=10
+until [ $j -lt 1 ]
+do
+    echo 'Best School'
+    ((j--))
+done
