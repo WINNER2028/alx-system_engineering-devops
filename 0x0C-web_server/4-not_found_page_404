@@ -11,7 +11,7 @@ echo -e "Ceci n\x27est pas une page" > /var/www/error/404.html
 SERVER_CONFIG=\
 "server {
 	listen 80 default_server;
-	listen [::]:80 default_server;
+	listen [::]:80 default_server ipv6only=on;
 	root /var/www/html;
 	index index.html index.htm index.nginx-debian.html;
 	server_name _;
