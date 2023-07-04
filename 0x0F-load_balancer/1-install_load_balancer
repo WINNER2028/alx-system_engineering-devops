@@ -1,55 +1,13 @@
 #!/usr/bin/env bash
-# install load balancer
+# Install and configure HAProxy load balancer
 
+sudo apt-get -y update
+sudo apt-get install -y haproxy
 
-echo -e "Updating and doing some minor checks...\n"
+# Enable load balancer
+sudo sed -i "8 a\ENABLED=1\n" /etc/default/haproxy
 
-function install() {
-	command -v "$1" &> /dev/null
+# Config load balancer with web servers
+sudo sed -i "$ a\ \nfrontend load_balancer\n\tbind\t0.0.0.0:80\n\tmode\thttp\n\tdefault_backend\tweb_servers\n\nbackend web_servers\n\tbalance\troundrobin\n\tserver\t204421-web-01\t54.234.135.30\n\tserver\t204421-web-02\t54.172.105.19" /etc/haproxy/haproxy.cfg
 
-	#shellcheck disable=SC2181
-	if [ $? -ne 0 ]; then
-		echo -e "	Installing: $1\n"
-		sudo apt-get update -y -qq && \
-			sudo apt-get install -y "$1" -qq
-		echo -e "\n"
-	else
-		echo -e "	${1} is already installed.\n"
-	fi
-}
-
-install haproxy #install haproxy
-
-echo -e "\nSetting up some minor stuff.\n"
-
-# backup default server config file
-sudo cp /etc/haproxy/haproxy.cfg haproxy_default.backup
-
-server_config=\
-"
-defaults
-  mode http
-  timeout client 15s
-  timeout connect 10s
-  timeout server 15s
-  timeout http-request 10s
-frontend clickviral-tech-frontend
-    bind *:80
-    default_backend clickviral-tech-backend
-backend clickviral-tech-backend
-    balance roundrobin
-    server 204421-web-01 54.234.135.30 check
-    server 204421-web-02 54.172.105.19 check
-"
-
-# shellcheck disable=SC2154
-echo "$server_config" | sudo dd status=none of=/etc/haproxy/haproxy.cfg
-
-# enable haproxy to be started by init script
-echo "ENABLED=1" | sudo dd status=none of=/etc/default/haproxy
-
-if [ "$(pgrep -c haproxy)" -le 0 ]; then
-	sudo service haproxy start
-else
-	sudo service haproxy restart
-fi
+sudo service haproxy start
