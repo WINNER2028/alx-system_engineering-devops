@@ -33,18 +33,18 @@ defaults
         errorfile 503 /etc/haproxy/errors/503.http
         errorfile 504 /etc/haproxy/errors/504.http
  
-frontend winnerstechnologies.tech-http-frontend
-        bind    0:80
+frontend 204421-web
+        bind    *:80
         mode    http
         http-request set-header X_forwarded-proto http
-        default_backend winnerstechnologies.tech-backend
+        default_backend 204421-web_servers
 
-frontend winnerstechnologies.tech-https-frontend
-        bind *:443 ssl crt /etc/haproxy/certs/combined.pem
+frontend 204421-web_servers
+        bind *:443 ssl crt /etc/ssl/www.winnerstechnologies.tech/combined.pem
         mode http
-        default_backend winnerstechnologies.tech-backend
+        default_backend 204421-web_servers
 
-backend winnerstechnologies.tech-backend
+backend 204421-web_servers
         balance roundrobin
-        server  204421-web-01   54.234.135.30 
-        server  204421-web-02   54.172.105.19
+        server  204421-web-01   54.234.135.30:80 check
+        server  204421-web-02   54.172.105.19:80 check
