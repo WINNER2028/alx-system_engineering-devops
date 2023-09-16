@@ -1,6 +1,6 @@
 ![image](https://user-images.githubusercontent.com/106745705/223235040-ee28b9aa-82d7-4fd8-9a23-a8266492ee5f.png)
 
-# Requirements
+# Requirements:
 ## General
 - All your files will be interpreted on Ubuntu 14.04 LTS
 - All your files should end with a new line
