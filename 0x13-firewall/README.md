@@ -1,5 +1,3 @@
-
-
 0x13. Firewall
 DevOpsSysAdminSecurity
 
