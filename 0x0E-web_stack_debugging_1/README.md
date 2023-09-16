@@ -7,7 +7,7 @@ DevOpsSysAdminScriptingDebugging
     Checker was released at Jul 5, 2023 8:24 PM
     An auto review will be launched at the deadline
 
-Concepts
+Concepts:
 
 For this project, we expect you to look at these concepts:
 
