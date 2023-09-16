@@ -1,6 +1,6 @@
 ![image](https://user-images.githubusercontent.com/106745705/212542741-3a7eba7f-0e84-4f8e-9cfa-9fcd2e37d546.png)
 
-In this project, some of the tasks will be graded on 2 aspects:
+In this project, some of the tasks will be graded on 2 aspects:::
 
 1. Is your web-01 server configured according to requirements
 2. Does your answer file contain a Bash script that automatically performs commands to configure an Ubuntu machine to fit requirements (meaning without any human intervention)
